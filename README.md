@@ -90,7 +90,7 @@ python Code/start_jobs.py --settings test.json
 
 In the test log, you should see the throughput (154/302 million point per second without/with TCNN on our 2080Ti), and the trained PSNR (about 53 dB for us).
 Performance may vary based on computer load, feel free to run multiple times to see outputs.
-On smaller graphics cards, you may have to reduce the batch size used for tests
+On smaller graphics cards, you may have to reduce the batch size used for tests.
 This test will also save a reconstructed scalar field sampled from the network at the same resolution of the original data in ```Output/Reconstruction/temp.nc```, which may be readily visualized in Paraview.
 
 To check that the offline renderer works:
@@ -100,7 +100,6 @@ python Code/renderer.py --load_from temp
 ```
 
 This will render a 512x512 image with 256 samples per ray and save it to ```/Output/render.png```.
-It will also render 10 more frames and give you an average framerate and print out frame times (24/31 fps on our machine without/with TCNN).
 
 The renderer with GUI is the last check:
 
@@ -142,7 +141,7 @@ Command line arguments are:
 
 #### Example training/testing:
 
-The following will run the jobs defined in example_file.json on all available CUDA devices (if available) or the CPU if no CUDA devices are detected by PyTorch. The vector field data will be hosted on the same device that the models train on.
+The following will run the jobs defined in example_file.json on all available CUDA devices (if available) or the CPU if no CUDA devices are detected by PyTorch. The scalar field data will be hosted on the same device that the models train on.
 
 ```python Code/start_jobs.py --settings example_file.json```
 
@@ -209,5 +208,6 @@ Noteable options are:
 Examples:
 
 ```python Code/renderer.py --hw 1024,1024 --spp 512 --azi 45 --polar 45 --load_from Supernova_AMGSRN_small --colormap Viridis.json```
+
 ```python Code/renderer.py --azi 45 --polar 45 --raw_data true --load_from Supernova.nc```
 
