@@ -1,0 +1,17 @@
+name: APMGSRN
+channels:
+  - defaults
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.9
+  - tensorboard
+  - numba
+  - zeep
+  - h5py
+  - matplotlib
+  - netcdf4
+  - vtk
+  - imageio
+  - sympy
+  - pyqtgraph
